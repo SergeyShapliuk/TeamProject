@@ -7,15 +7,18 @@ import {UserDataType} from "../../../m2-bll/r2-actions/ActionLoginForm";
 import {meRespType} from "../../../m3-dal/meAPI";
 import {ChangeNameInput} from "./ChangeNameInput";
 import {ProfileNameSpan} from "./ProfileNameSpan";
+import {Navigate} from "react-router-dom";
+import {RoutesXPaths} from "../../routes/routes";
+
 
 export const BASE_IMG_URL = "https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
 
 const Profile = () => {
-
     const dispatch = useDispatch()
 
     const userInfo = useFridaySelector<UserDataType | meRespType>(state => state.profile.profile)
     const errorMessage = useFridaySelector<string>(state => state.profile.error)
+    const globalError = useFridaySelector<string>(state => state.app.globalError)
 
     const [name, setName] = useState<string>(userInfo.name)
     const [error, setError] = useState<string>("")
@@ -46,38 +49,42 @@ const Profile = () => {
             setModification(!modification)
         }
     }
+    if (globalError === "you are not authorized /ᐠ-ꞈ-ᐟ\\"){
+        return  <Navigate to={RoutesXPaths.LOGIN}/>
+    }
 
-    return (
-        <div className={s.profilePage}>
-            <div className={s.profileContainer}>
-                <h2 className={s.title}>Personal information</h2>
-                <img src={userInfo.avatar ? userInfo.avatar : BASE_IMG_URL} alt={"user's image"} title={"your avatar"}/>
-                <span>{`Cards: ${userInfo.publicCardPacksCount}`}</span>
-                <div className={s.nameContainer}>
-                    {
-                        !!errorMessage && <div className={s.errorMessage}>{errorMessage}</div>
-                    }
-                    {
-                        modification
-                            ? (
-                                <ChangeNameInput
-                                    name={name}
-                                    error={error}
-                                    changeNameValue={changeNameValue}
-                                    onKeyPressHandler={onKeyPressHandler}
-                                    updateUser={updateUser}
-                                />
-                            ) : (
-                                <ProfileNameSpan
-                                    name={userInfo.name}
-                                    changeModification={changeModification}
-                                />
-                            )
-                    }
+        return (
+            <div className={s.profilePage}>
+                <div className={s.profileContainer}>
+                    <h2 className={s.title}>Personal information</h2>
+                    <img src={userInfo.avatar ? userInfo.avatar : BASE_IMG_URL} alt={"user's image"}
+                         title={"your avatar"}/>
+                    <span>{`Cards: ${userInfo.publicCardPacksCount}`}</span>
+                    <div className={s.nameContainer}>
+                        {
+                            !!errorMessage && <div className={s.errorMessage}>{errorMessage}</div>
+                        }
+                        {
+                            modification
+                                ? (
+                                    <ChangeNameInput
+                                        name={name}
+                                        error={error}
+                                        changeNameValue={changeNameValue}
+                                        onKeyPressHandler={onKeyPressHandler}
+                                        updateUser={updateUser}
+                                    />
+                                ) : (
+                                    <ProfileNameSpan
+                                        name={userInfo.name}
+                                        changeModification={changeModification}
+                                    />
+                                )
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
 
-export default Profile
+    export default Profile

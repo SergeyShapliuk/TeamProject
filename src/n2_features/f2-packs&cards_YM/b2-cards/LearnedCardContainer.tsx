@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
-
+import s from "./LearnedCard.module.css"
 import {useFridaySelector} from "../../../n1_main/m2-bll/store";
 import {cardsTC} from "../../../n1_main/m2-bll/r3-thunks/ThunkCards";
 import {RequestStatusType} from "../../../n1_main/m2-bll/r1-reducers/app-reducer";
@@ -27,7 +27,7 @@ const LearnedCardContainer = () => {
     }
 
     return (
-        <div>
+        <div className={s.learnCardBlock}>
             <LearnedCard/>
         </div>
     )

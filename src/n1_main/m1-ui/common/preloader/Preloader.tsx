@@ -1,6 +1,7 @@
 import React from "react";
 import preloader from "../../assets/preloader/preloader.gif"
 import {RequestStatusType} from "../../../m2-bll/r1-reducers/app-reducer";
+import s from "./Preloader.module.css"
 
 type PreloaderType = {
     status: RequestStatusType
@@ -8,20 +9,15 @@ type PreloaderType = {
 
 const Preloader = ({status}: PreloaderType) => {
     return (
-        < >
+        <div className={s.preloader}>
             {
                 status === "loading" &&
                 <img
                     src={preloader}
-                    style={{
-                        width: "200px",
-                        height: "200px", left: "45%", top: "45%",
-                        position: "absolute", opacity: ".5",
-                    }}
                     alt='preloader'
                 />
             }
-        </>
+        </div>
     )
 }
 

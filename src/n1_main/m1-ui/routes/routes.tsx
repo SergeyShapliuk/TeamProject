@@ -33,9 +33,7 @@ const RoutesX = () => {
             <Routes>
                 <Route path={RoutesXPaths.PROFILE} element={<Profile/>}/>
                 <Route path={RoutesXPaths.REGISTER} element={<Register/>}/>
-                <Route path={RoutesXPaths.LOGIN} element={
-                    <Login/>
-                }/>
+                <Route path={RoutesXPaths.LOGIN} element={<Login/>}/>
                 <Route path={RoutesXPaths.RECOVERY} element={<PasswordRecovery/>}/>
                 <Route path={RoutesXPaths.SET_PASS} element={<NewPassword/>}/>
                 <Route path={RoutesXPaths.PACKS} element={<Packs/>}/>
@@ -50,7 +48,7 @@ const RoutesX = () => {
 
             </Routes>
 
-            <Redirect/>
+            {/*<Redirect/>*/}
         </div>
     )
 }

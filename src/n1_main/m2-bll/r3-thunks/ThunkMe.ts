@@ -6,6 +6,7 @@ import {initializeMeAC} from "../r2-actions/ActionsMe";
 import {LoginFormActions} from "../r2-actions/ActionLoginForm";
 
 export const meTC = () => async (dispatch: Dispatch) => {
+
     dispatch(setAppStatusAC("loading"))
     dispatch(setIsLoadAC(true))
     try {
@@ -14,9 +15,10 @@ export const meTC = () => async (dispatch: Dispatch) => {
         dispatch(LoginFormActions.setIsLoggedInAC(true))
         dispatch(setAppStatusAC("succeeded"))
     } catch (e: any) {
-        dispatch(setGlobalErrorAC(e.response ? e.response.data.error : 'some error'))
+        dispatch(setGlobalErrorAC(e.response? e.response.data.error : 'some error'))
         dispatch(setAppStatusAC("failed"))
-    } finally {
+    }
+    finally {
         dispatch(initializeMeAC(true))
         dispatch(setAppStatusAC("idle"))
         dispatch(setIsLoadAC(false))

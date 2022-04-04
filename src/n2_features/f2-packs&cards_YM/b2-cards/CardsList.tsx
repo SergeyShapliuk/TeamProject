@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect} from "react";
 import style from "./CardsList.module.css"
 
-import {useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 import {useDebounce} from "use-debounce";
 import {useDispatch} from "react-redux";
 
@@ -19,6 +19,7 @@ import Modal from "../../../n1_main/m1-ui/common/ModalWindow/ModalWindow";
 import TestAddCardComponent from "./TestAddCardComponent";
 import GlobalError from "../../../n1_main/m1-ui/common/GlobalError/GlobalError";
 import {setGlobalErrorAC} from "../../../n1_main/m2-bll/r1-reducers/app-reducer";
+import {RoutesXPaths} from "../../../n1_main/m1-ui/routes/routes";
 
 type CardsListType = {
     name: string
@@ -26,7 +27,6 @@ type CardsListType = {
 }
 
 const CardsList = ({name}: CardsListType) => {
-
     const dispatch = useDispatch()
     const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
     const {packId} = useParams<'packId'>()
@@ -113,9 +113,8 @@ const CardsList = ({name}: CardsListType) => {
                             <GlobalError/>
                         }
                     </Modal>
-
-                    <TablesCardsPagination/>
                 </div>
+                <TablesCardsPagination/>
             </div>
         </div>
     )

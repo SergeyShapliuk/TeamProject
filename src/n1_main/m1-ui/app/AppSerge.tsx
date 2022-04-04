@@ -14,19 +14,17 @@ const AppSerge = () => {
 
     const status = useFridaySelector<RequestStatusType>(state => state.app.status)
     const initialized = useFridaySelector<boolean>(state => state.me.isInitialized)
+    const isLoginIn = useFridaySelector<boolean>(state => state.login.isLoggedIn)
 
     useEffect(() => {
         dispatch(meTC())
     }, [])
 
-    if (!initialized) {
-        return <Preloader status={status}/>
-    }
-
     return (
         <div className="App">
-            <Main/>
+            {isLoginIn? <Main/>:null}
             <RoutesX/>
+            <Preloader status={status}/>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import PacksList from "../../../n2_features/f2-packs&cards_YM/b1-packs/PacksList";
 import {cardsActions} from "../../m2-bll/r2-actions/ActionsCards";
 import {setGlobalErrorAC} from "../../m2-bll/r1-reducers/app-reducer";
+import s from "./Packs.module.css"
 
 const Packs = () => {
     const dispatch = useDispatch()
@@ -14,7 +15,7 @@ const Packs = () => {
     }, [])
 
     return (
-        <div>
+        <div className={s.packs}>
             <PacksList/>
         </div>
     )

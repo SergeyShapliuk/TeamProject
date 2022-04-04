@@ -23,7 +23,7 @@ const PasswordView = ({isVisible}: PasswordViewType) => {
         <div>
             <span
                 onClick={onChangeIcon}
-                style={{fontSize: "13px"}}
+                style={{fontSize: "13px",position:"absolute",top:"50%",marginLeft:"-30px"}}
             >
                 {icon}
             </span>

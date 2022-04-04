@@ -1,5 +1,9 @@
 .registerPage {
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .registerContainer {
@@ -53,6 +57,7 @@
 .second input {
     width: 80%;
     min-height: 30px;
+    position: relative;
     border: none;
     border-bottom: 1px solid #5f7271;
     outline:none;
@@ -139,4 +144,9 @@
 
 .cancelButton a:hover {
     color: #fff;
+}
+.icon{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 300px;
 }

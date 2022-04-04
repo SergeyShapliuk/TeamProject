@@ -34,10 +34,11 @@
 .login input {
     width: 240px;
     height: 20px;
+    position: relative;
     outline: none;
     border: none;
     border-bottom: 1px #726d6f solid;
-    padding: 5px;
+    padding: 7px;
 }
 
 .login form {

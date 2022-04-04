@@ -10,9 +10,9 @@ type DivPropsType = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivEle
 type AuthRedirectPagePropsType = DivPropsType & {}
 
 const AuthRedirectPage: React.FC<AuthRedirectPagePropsType> = React.memo(({children, ...restProps}) => {
-
+debugger
     const isInitialized = useFridaySelector<boolean>(state => state.me.isInitialized)
-    const meReducerStateError = useFridaySelector<Undetectable<string>>(state => state.me.error)
+    const meReducerStateError = useFridaySelector<Undetectable<string>>(state => state.app.globalError)
     const newPassInfo = useFridaySelector<Undetectable<string>>(state => state.regForNewPass.newPassword.info)
     const userEmail = useFridaySelector<string>(state => state.login.user.email)
 
@@ -20,9 +20,6 @@ const AuthRedirectPage: React.FC<AuthRedirectPagePropsType> = React.memo(({child
         return <Me/>
     }
 
-    if (meReducerStateError === "you are not authorized /ᐠ-ꞈ-ᐟ\\") {
-        return <Navigate to={RoutesXPaths.LOGIN}/>
-    }
 
     if (newPassInfo === "\"setNewPassword success —ฅ/ᐠ.̫ .ᐟฅ—\"") {
         return <Navigate to={RoutesXPaths.LOGIN}/>

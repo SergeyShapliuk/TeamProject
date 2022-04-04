@@ -141,8 +141,8 @@ const PacksList = () => {
                         {globalError !== '' && <GlobalError/>}
                         {packMode === 'add' && <AddPackComponent/>}
                     </Modal>
-                    <TablesPagination/>
                 </div>
+                <TablesPagination/>
             </div>
 
         </div>
