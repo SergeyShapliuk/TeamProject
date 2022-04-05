@@ -67,7 +67,7 @@ const LoginForm = () => {
             <hr/>
 
             <div className={style.login}>
-                <h1>Login</h1>
+                <h1>Log in</h1>
                 <form onSubmit={formik.handleSubmit}>
                     <div className={style.second}>
                         <span>eMail:</span>
